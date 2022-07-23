@@ -12,8 +12,8 @@ function Pokemon(props: PokemonProps) {
   // const [stats, setStats] = useState();
   // const [sprite, setSprite] = useState();
   // const [shinySprite, setShinySprite] = useState();
-  
-  const {name, url} = props;
+
+  const { name, url } = props;
 
   // async function fetchData() {
   //   const response = await fetch(url);
@@ -33,7 +33,7 @@ function Pokemon(props: PokemonProps) {
       {/* <img src={sprite} />
       <img src={shinySprite} /> */}
 
-        {/* {name}
+      {/* {name}
         {type &&
           type.map((t, index) => {
             <p key={index}> Type: {t.type.name}</p>;
