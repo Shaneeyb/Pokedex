@@ -47,6 +47,6 @@
     "prettier": "2.7.1"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,css,md}": "npx prettier --write"
+    "*": "prettier --ignore-unknown --write"
   }
 }
