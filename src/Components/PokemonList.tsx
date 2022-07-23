@@ -1,26 +1,33 @@
-import React, { useState, useEffect }from "react";
+import React, { useState, useEffect, useCallback }from "react";
 import Pokemon from "./Pokemon";
 
+interface PokemonLink {
+    name: string;
+    url: string;
+}
+
+interface ResponseResult {
+    count: number;
+    results: PokemonLink[];
+}
 
 function AllPokemon() {
-    const [allPokemon, setAllPokemon] = useState();
+    const [allPokemon, setAllPokemon] = useState<PokemonLink[]>([]);
 
-    useEffect(() => {
-        const fetchPokemonData = async () => {
+    const fetchPokemon = useCallback(async() => {
             const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0");
-            console.log(response)
-            const json = await response.json();
-            setAllPokemon(json.results)
-        }
-        fetchPokemonData();
+            const pokemon = (await response.json() as ResponseResult)?.results;
+            setAllPokemon(pokemon)
     }, [])
 
     return (
         <>
+        <button onClick={fetchPokemon}>Get Pokemon</button>
         {
-            allPokemon && 
             allPokemon.map((p, index) => {
-                <Pokemon key={index} name={p.name} url={p.url}
+                return (
+                    <Pokemon key={index} name={p.name} url={p.url} />
+                )
             })
         }
         </>
