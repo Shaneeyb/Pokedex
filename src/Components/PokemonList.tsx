@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import Pokemon from "./Pokemon";
+import Pokemon from "./pokemon";
 
 interface PokemonLink {
   name: string;
